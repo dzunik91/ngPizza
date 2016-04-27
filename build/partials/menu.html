@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <input type="text" class="form-control" placeholder="szukaj..." ng-model="search">
+            <br>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="panel panel-default" ng-repeat="pizza in pizzaMenu | filter : search">
+            <div class="panel-body">
+                <h2><span class="label label-warning pull-right">Cena: {{pizza.price| number: 2}} zł</span></h2>
+                <h2><span class="label label-warning pull-left">{{pizza.id}}</span></h2>
+                <h2>Nazwa:{{pizza.name | uppercase}}</h2>
+                <h6>Składniki: <p ng-repeat="in in menuIng" ng-if="pizza.ingredients.indexOf(in.id) >= 0">{{in.label }},</p></h3>
+					<p>&nbsp;</p>
+					<input ng-init="pizza.quantity=1"  ng-model="pizza.quantity" type="number"  name="pizzaQuantity" min="0" max="100" step="1" value="1" >
+					<button ng-click="expressOrder(pizza)" class="btn btn-success">Ekspresowe zamówienie</button>
+					<button ng-click="open(pizza)" class="btn btn-primary">Dodaj do koszyka</button>
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<!--CART-KOSZYK-PANEL-->
+
+			<div class="container">
+				<div class="col-xs-6">
+			
+
+
+				
+				<div class="panel panel-default">
+					<div class="panel-body">
+						
+						<table class="table">
+								<thead>
+									<tr>
+										<th>Produkt</th>
+										<th>Cena</th>
+										<th>Ilość</th>
+										<th>Razem</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="pizza in cart">
+										<td>
+											{{pizza.name}}
+										</td>
+										<td>
+											{{pizza.price}} zł
+										</td>
+										<td>
+				<button ng-click="incQty(pizza)">+</button>
+				{{pizza.quantity}}
+                <button  ng-click="decQty(pizza)">-</button>
+               
+										<td>
+											{{pizza.quantity*pizza.price | number: 2}}
+										</td>
+										<td>
+											<button ng-click="deleteInCart(pizza)"><span class="glyphicon glyphicon-remove-sign"></span></button>
+										</td>
+									</tr>
+									<tr>
+										<th></th>
+										<th></th>
+										<th><strong>RAZEM:</strong></th>
+										<th> {{cartSum() + extraIngSum()| number: 2}} zł</th>
+									</tr>
+								</tbody>
+							</table>
+					
+			
+
+						<button ng-click="finishOrder(pizza)" class="btn btn-primary">Finalizuj</button>
+					</div>
+				</div>
+				
+				
+
+					</div>
+			</div>
+
+		</div>

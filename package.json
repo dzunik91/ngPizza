@@ -1,0 +1,26 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Zajebisty projekt pizzeri w angualrze ",
+  "main": "index.html",
+  "dependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzunik91/Projekt-UAM.git"
+  },
+  "author": "MJunik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dzunik91/Projekt-UAM/issues"
+  },
+  "homepage": "https://github.com/dzunik91/Projekt-UAM#readme"
+}

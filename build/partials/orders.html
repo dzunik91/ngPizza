@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table">
+                    <h1>PODSUMOWANIE ZAMÓWIENIA</h1>
+                    <thead>
+                        <tr>
+                            <th>Produkt</th>
+                            <th>Cena</th>
+                            <th>Ilość</th>
+                            <th>Razem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pizza in cart">
+                            <td>
+                                {{pizza.name}}
+                            </td>
+                            <td>
+                                {{pizza.price}} zł
+                            </td>
+                            <td>
+                                {{pizza.quantity}}
+                                <td>
+                                    {{pizza.quantity*pizza.price | number: 2}}
+                                </td>
+                                <td>
+                                    <button ng-click="deleteInCart(pizza)"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th><strong>RAZEM:</strong></th>
+                            <th> {{cartSum() | number: 2}} zł</th>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+
+    <!--DANE Konaktowe-->
+
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <h1>Wypełnij formularz</h1>
+                <form role="form" name="validForm">
+                    <div class="form-group">
+                        <label for="numerTelefonu">Numer telefonu:</label >
+                        <input name="phone" class="form-control" ng-model="client.phone" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="adres">Nazwa ulicy: </label>
+                        <input name="street" class="form-control" ng-model="client.street" required="required">
+                    </div>
+                     <div class="form-group">
+                        <label for="adres">Dodatkowe uwagi: </label>
+                        <input class="form-control" ng-model="client.remarks" name="remarks">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<button ng-show="validForm.$valid" ng-click="orderFinish(client)" class="btn btn-success">Zamów</button>
+<a ui-sref="menu" class="btn btn-danger">Wróc</a>

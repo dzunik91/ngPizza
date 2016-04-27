@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h1 class="modal-title">{{pizza.name}} - {{pizza.price  | number: 2}} + {{extraIngredientsSum() | number: 2}} PLN</h1>
+</div>
+<div class="modal-body">
+    <h3>Składniki Bazowe</h3>
+    <span class="label label-danger" ng-repeat="in in menuIngModal" ng-if="pizza.ingredients.indexOf(in.id) >= 0">{{in.label}}</span>
+    <h3>Składniki Dodatkowe</h3>
+    <button class="btn btn-info" ng-repeat="ein in extraIngredients" ng-click="removeIngredient($index)">{{ein.label}}</button>
+    
+    <h3>Wybierz dodatkowe składniki</h3>
+ 
+    <button class="btn" ng-repeat="ing in menuIngModal" ng-modal="pizzaModal.extraIngredients" ng-click="addIngredient(ing)" >{{ing.label}} - {{ing.price}}</button>
+
+
+    <h2>SUMA: {{(pizza.price + extraIngredientsSum()) | number: 2}} PLN</h2>
+    <h7>Ilość: {{pizza.quantity}}</h7>
+</div>
+<div class="modal-footer">
+    <button class="btn" type="button" ng-click="addToCart(pizza)">Dodaj do koszyka</button>
+    <button class="btn btn-warning" type="button" ng-click="close()">Cancel</button>
+</div>

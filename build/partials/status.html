@@ -1,0 +1,25 @@
+<div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+
+
+
+        <h1 class="text-center">Złożono zamówienie !</h1>
+       
+            </div>
+            <div class="page status-page">
+	<div class="page-content ">
+		<h2>Status zamówienia</h2>
+		<div class="status-detail">
+			<label>Ordered delivery time:</label>
+			<span class="ordered-time"> {{ordered | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+			<label>Estimated delivery time:</label>
+			<span class="estimated-time"> {{estimated | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+			<label>Minuty pozostałe:</label>
+			<span class="timeLeft"> {{timeLeft}}</span>
+		</div>
+	</div>
+</div>		
+    </div>
+</div>
